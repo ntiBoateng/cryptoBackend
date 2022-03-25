@@ -38,4 +38,25 @@ router.post('/addportfolio', fetchuser, async (req, res) => {
             res.status(500).send("Internal Server Error");
         }
 })
- 
+   // ROUTE 3: Update an existing Portfolio using: POST "/api/portfolio/updateportfolio". Login required
+
+router.put('/updateportfolio/:id', fetchuser, async (req, res) => {
+    const {coinid,amount} = req.body;
+    // Create a newPortfolio object
+    const newPortfolio = {};
+    if(coinid){newPortfolio.coinid = coinid};
+    if(amount){newPortfolio.amount = amount};
+   
+
+    // Find the portfolio to be updated and update it
+    let portfolio = await Portfolio.findById(req.params.id);
+    if(!portfolio){return res.status(404).send("Not Found")}
+
+    if(portfolio.user.toString() !== req.user.id){
+        return res.status(401).send("Not Allowed");
+    }
+
+    portfolio = await Portfolio.findByIdAndUpdate(req.params.id, {$set: newPortfolio}, {new:true})
+    res.json({portfolio});
+
+})
