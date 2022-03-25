@@ -1,0 +1,19 @@
+{
+  "name": "cryptobackends",
+  "version": "1.0.0",
+  "description": "A backend server to support the frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntiBoateng/cryptoBackend.git"
+  },
+  "author": "Gideon Nti Boateng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntiBoateng/cryptoBackend/issues"
+  },
+  "homepage": "https://github.com/ntiBoateng/cryptoBackend#readme"
+}
