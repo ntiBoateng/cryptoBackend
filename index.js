@@ -7,3 +7,4 @@ const portfolioRoute = require('./routes/Portfolio')
 const watchlistRoute = require('./routes/Watchlist')
 
 connectToMongo();
+
