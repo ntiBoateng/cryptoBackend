@@ -60,3 +60,22 @@ router.put('/updateportfolio/:id', fetchuser, async (req, res) => {
     res.json({portfolio});
 
 })
+router.delete('/deleteportfolio/:id', fetchuser, async (req, res) => {
+    const {coinid,amount} = req.body;
+
+    // Find the portfolio to be deleted and delete it
+    let portfolio = await Portfolio.findById(req.params.id);
+    if(!portfolio){return res.status(404).send("Not Found")}
+
+    //  Allow deletion only if user owns this portfolio 
+    if(portfolio.user.toString() !== req.user.id){
+        return res.status(401).send("Not Allowed");
+    }
+
+    portfolio = await Portfolio.findByIdAndDelete(req.params.id)
+    res.json({"Success" : "Portfolio deleted"});
+
+    })
+
+
+module.exports = router
