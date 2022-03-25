@@ -7,11 +7,28 @@ const portfolioRoute = require('./routes/Portfolio')
 const watchlistRoute = require('./routes/Watchlist')
 
 connectToMongo();
+
+const app = express()
+const port = process.env.PORT || 5000;
+
+app.use(express.json())
+
+const cors = require('cors');
+app.use(cors({ origin: true }));
+
 app.get("/",(req,res)=>{
-    res.send("Express Backendbthis is right behind you !")
-  })
-  app.use('/api/auth', authRoute)
-  app.use('/api/portfolio', portfolioRoute)
-  app.use('/api/watchlist', watchlistRoute)
-  
-  
+  res.send("Express Backend this is right behind you !")
+})
+
+app.use('/api/auth', authRoute)
+app.use('/api/portfolio', portfolioRoute)
+app.use('/api/watchlist', watchlistRoute)
+
+
+
+
+
+app.listen(port, () => {
+  console.log(`Express server listening at http://localhost:${port}`)
+})
+
