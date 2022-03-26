@@ -64,4 +64,24 @@ router.post('/addwatchlist', fetchuser, async (req, res) => {
     }
 
 })
- 
+ // ROUTE 4: Delete an existing Watchlist using: POST "/api/watchlist/deletewatchlist". Login required
+
+ router.delete('/deletewatchlist/:id', fetchuser, async (req, res) => {
+    const {coinid} = req.body;
+
+    // Find the watchlist to be deleted and delete it
+    let watchlist = await Watchlist.findById(req.params.id);
+    if(!watchlist){return res.status(404).send("Not Found")}
+
+    //  Allow deletion only if user owns this watchlist 
+    if(watchlist.user.toString() !== req.user.id){
+        return res.status(401).send("Not Allowed");
+    }
+
+    watchlist = await Watchlist.findByIdAndDelete(req.params.id)
+    res.json({"Success" : "Watchlist deleted"});
+
+    })
+
+
+module.exports = router
