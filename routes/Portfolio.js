@@ -4,6 +4,8 @@ var fetchuser = require('../middleware/fetchuser')
 const Portfolio = require('../Models/Portfolio')
 const { body, validationResult } = require('express-validator');
 
+// Route 1: Get All Portfolio using : GET
+
 router.get('/fetchallportfolios', fetchuser, async (req, res) => {
 
     try {
@@ -15,7 +17,7 @@ router.get('/fetchallportfolios', fetchuser, async (req, res) => {
     }
 })
 
-ROUTE 2: Add a new Portfolio using: POST "/api/auth/addportfolio". Login required
+// ROUTE 2: Add a new Portfolio using: POST "/api/auth/addportfolio". Login required
 router.post('/addportfolio', fetchuser, async (req, res) => {
         try {
 
@@ -38,7 +40,7 @@ router.post('/addportfolio', fetchuser, async (req, res) => {
             res.status(500).send("Internal Server Error");
         }
 })
-   // ROUTE 3: Update an existing Portfolio using: POST "/api/portfolio/updateportfolio". Login required
+    // ROUTE 3: Update an existing Portfolio using: POST "/api/portfolio/updateportfolio". Login required
 
 router.put('/updateportfolio/:id', fetchuser, async (req, res) => {
     const {coinid,amount} = req.body;
@@ -60,7 +62,10 @@ router.put('/updateportfolio/:id', fetchuser, async (req, res) => {
     res.json({portfolio});
 
 })
-router.delete('/deleteportfolio/:id', fetchuser, async (req, res) => {
+    
+ // ROUTE 4: Delete an existing Portfolio using: POST "/api/portfolio/deleteportfolio". Login required
+
+ router.delete('/deleteportfolio/:id', fetchuser, async (req, res) => {
     const {coinid,amount} = req.body;
 
     // Find the portfolio to be deleted and delete it
