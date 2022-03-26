@@ -37,3 +37,31 @@ router.post('/addwatchlist', fetchuser, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 })
+  // ROUTE 3: Update an existing Watchlist using: POST "/api/watchlist/updatewatchlist". Login required
+
+  router.put('/updatewatchlist/:id', fetchuser, async (req, res) => {
+    try {
+    const {coinid} = req.body;
+    // Create a newWatchlist object
+    const newWatchlist = {};
+    if(coinid){newWatchlist.coinid = coinid};
+   
+        
+
+    // Find the watchlist to be updated and update it
+    let watchlist = await Watchlist.findById(req.params.id);
+    if(!watchlist){return res.status(404).send("Not Found")}
+
+    if(watchlist.user.toString() !== req.user.id){
+        return res.status(401).send("Not Allowed");
+    }
+
+    watchlist = await Watchlist.findByIdAndUpdate(req.params.id, {$set: newWatchlist}, {new:true})
+        res.json({ watchlist });
+    }
+    catch (error) {
+        res.status(500).send("Some Error Occurred")
+    }
+
+})
+ 
