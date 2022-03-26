@@ -60,7 +60,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: 'The id of the watchlist.'
+          description: The id of the watchlist.
           required: true
           schema:
             type: string
@@ -85,7 +85,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: 'The id of the watchlist.'
+          description: The id of the watchlist.
           required: true
           schema:
             type: string
@@ -151,7 +151,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: 'The id of the watchlist.'
+          description: The id of the watchlist.
           required: true
           schema:
             type: string
@@ -176,7 +176,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: 'The id of the watchlist.'
+          description: The id of the watchlist.
           required: true
           schema:
             type: string
@@ -191,6 +191,68 @@ paths:
                     {"_id":{"$oid":"623f110c2bda81ea7e809e06"},"user":{"$oid":"623ece0efc9e0d1da809bf80"},"coinid":"bitcoin","amount":0.4,"__v":0}
       tags:
         - portfolio
+  /createuser:
+    summary: Create a new user
+    description: This path creates a new user and save into the database.
+    post:
+      summary: Creates a new user
+      description: This path creates a new user
+      operationId: post_user
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                user sample:
+                  value: >-
+                    {"_id":{"$oid":"623ece0efc9e0d1da809bf80"},"name":"Gideon
+                    Nti
+                    Boateng","email":"gidiboateng200@gmail.com","password":"$2a$10$silx3wBIh3sgQM.lN.e.G.2G98./qS4mcad5o8xxvoQrwiX5yiSL.","__v":0}
+      tags:
+        - auth
+  /login:
+    summary: Authenticates users
+    description: This path authenticates and login users
+    post:
+      summary: Authenticate a user using POST "/api/auth/login"
+      description: This path authenticate a user using POST request
+      operationId: post_login
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                login sample:
+                  value: >-
+                    {"_id":{"$oid":"623ece0efc9e0d1da809bf80"},"name":"Gideon
+                    Nti
+                    Boateng","email":"gidiboateng200@gmail.com","password":"$2a$10$silx3wBIh3sgQM.lN.e.G.2G98./qS4mcad5o8xxvoQrwiX5yiSL.","__v":0}
+      tags:
+        - login
+        - auth
+        - auth
+  /getuser:
+    summary: Authenticate a user using a post request
+    description: This path authenticates a user using a post request.
+    post:
+      summary: Authenticate a user using POST "/api/auth/login"
+      description: This path authenticate a user using POST "/api/auth/login"
+      operationId: post_getuser
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                auth user:
+                  value: >-
+                    {"_id":{"$oid":"623ece0efc9e0d1da809bf80"},"name":"Gideon
+                    Nti
+                    Boateng","email":"gidiboateng200@gmail.com","password":"$2a$10$silx3wBIh3sgQM.lN.e.G.2G98./qS4mcad5o8xxvoQrwiX5yiSL.","__v":0}
+      tags:
+        - auth
 components:
   schemas:
     watchlist:
