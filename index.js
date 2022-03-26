@@ -17,7 +17,7 @@ const cors = require('cors');
 app.use(cors({ origin: true }));
 
 app.get("/",(req,res)=>{
-  res.send("Express Backend this is right behind you !")
+  res.send("Express Backend this is left or right behind you !\nAll Backend database are served from here")
 })
 
 app.use('/api/auth', authRoute)

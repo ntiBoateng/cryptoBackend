@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser')
 const { body, validationResult } = require('express-validator');
 
-const Jwt_SECRET = "PANKAJ CHAUDHARY";
+const Jwt_SECRET = "GIDEONS NTI BOATENG";
 
 //Route 1: Create a user using :POST "/api/auth".Doesnt require Auth
 router.post('/createuser', [

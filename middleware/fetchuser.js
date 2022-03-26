@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const Jwt_SECRET = "PANKAJ CHAUDHARY";
+const Jwt_SECRET = "GIDEONS NTI BOATENG";
 
 const fetchuser = (req, res, next) => {
     // GET the user from the jwt token and append to user id 
