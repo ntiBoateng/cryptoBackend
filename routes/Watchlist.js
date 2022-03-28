@@ -29,7 +29,7 @@ router.post('/addwatchlist', fetchuser, async (req, res) => {
                 return res.status(400).json({ errors: errors.array() });
             }
             const watchlist = new Watchlist({
-                coinid,user: req.user.id
+                coinid,user: req.user.id,
             })
             const savedWatchlist = await watchlist.save()
 

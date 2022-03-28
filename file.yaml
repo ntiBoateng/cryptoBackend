@@ -1,9 +1,9 @@
 openapi: 3.0.1
 info:
-  title: Cryptocurrency Market APIs
+  title: Cryptocurrency Market Backend  APIs
   version: 1.0.0
   description: >-
-    A basic API for working with the swagger tools to support routes in the
+    A basic API for working with the swagger tools to support paths in the
     server.
 paths:
   /fetchallwatchlists:
@@ -229,28 +229,7 @@ paths:
                     {"_id":{"$oid":"623ece0efc9e0d1da809bf80"},"name":"Gideon
                     Nti
                     Boateng","email":"gidiboateng200@gmail.com","password":"$2a$10$silx3wBIh3sgQM.lN.e.G.2G98./qS4mcad5o8xxvoQrwiX5yiSL.","__v":0}
-      tags:
-        - login
-        - auth
-        - auth
-  /getuser:
-    summary: Authenticate a user using a post request
-    description: This path authenticates a user using a post request.
-    post:
-      summary: Authenticate a user using POST "/api/auth/login"
-      description: This path authenticate a user using POST "/api/auth/login"
-      operationId: post_getuser
-      responses:
-        default:
-          description: Default error sample response
-          content:
-            application/json:
-              examples:
-                auth user:
-                  value: >-
-                    {"_id":{"$oid":"623ece0efc9e0d1da809bf80"},"name":"Gideon
-                    Nti
-                    Boateng","email":"gidiboateng200@gmail.com","password":"$2a$10$silx3wBIh3sgQM.lN.e.G.2G98./qS4mcad5o8xxvoQrwiX5yiSL.","__v":0}
+
       tags:
         - auth
 components:

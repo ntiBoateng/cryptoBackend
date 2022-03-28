@@ -6,7 +6,7 @@ const authRoute = require('./routes/auth')
 const portfolioRoute = require('./routes/Portfolio')
 const watchlistRoute = require('./routes/Watchlist')
 
-connectToMongo();
+//connectToMongo();
 
 const app = express()
 const port = process.env.PORT || 5000;
